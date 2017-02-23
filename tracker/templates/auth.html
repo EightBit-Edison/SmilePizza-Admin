@@ -1,0 +1,28 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>Авторизация</title>
+	<link rel="stylesheet" type="text/css" href="{% static "tracker/css/styleauth.css" %}" />
+	<!-- icon fonts font Awesome -->
+	<link href="{% static "tracker/css/font-awesome.min.css" %}" rel="stylesheet">
+
+	<!-- Custom Styles -->
+	<link href="{% static "tracker/css/style.css" %}" rel="stylesheet">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="http://www.modernizr.com/downloads/modernizr-latest.js"></script>
+	<script type="text/javascript" src="{% static "tracker/js/placeholder.js" %}"></script>
+</head>
+<body>
+
+	<form id="slick-login" method="post">
+        {% csrf_token %}
+        <h3 class="site-title">
+					CourierAdmin
+				</h3><!-- /.site-title -->
+		<label for="username">Логин:</label><input type="text" name="username" class="placeholder" placeholder="Login" id="username">
+		<label for="password">Пароль:</label><input type="password" name="password" class="placeholder" placeholder="Password" id="password">
+		<input type="submit" value="Enter">
+	</form>
+</body>
+</html>
