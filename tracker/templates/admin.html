@@ -3,24 +3,22 @@
 <html ng-app="myApp"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script   src="https://code.jquery.com/jquery-2.2.4.js"   integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="   crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href={% static "tracker/css/stylesheet.css" %} rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
     <script type="text/javascript" src="{% static "tracker/js/select.js" %}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
     <style type="text/css">
         html, body { height: 100%; margin: 0; padding: 0; }
-        #map { width: 100%; height: 400px; }
+        #map { width: 100%; height: 600px; }
     </style>
 
 
   </head>
-    <body onload="Get()">
+    <body onload="loadDoc()">
     <div class="navbar navbar-default navbar-static-top" style="background-color: #323B55">
       <div class="container">
         <div class="navbar-header">
@@ -33,41 +31,7 @@
       </div>
     </div>
     <div class="section">
-      <div class="col-md-6">
-      <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Пользователи</h3>
-            </div>
-            <div class="panel-body">
-              <div class="col-md-4">
-                <select class="selectpicker" id="myselect" data-width="100%" onchange="SetUser()" data-live-search="true" title="Выберите студента">
-                </select>
-              </div>
-              <div class="col-md-4">
-                <a class="btn btn-block btn-success" href="/add/">Добавить</a>
-              </div>
-              <div class="col-md-4">
-                <a class="btn btn-block btn-danger" onclick="GetPos()">Удалить</a>
-              </div>
-            </div>
-            <hr>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th class="active">Имя</th>
-                  <th class="active">Статус</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr id="userparam">
-                  <td id="Name">Name</td>
-                  <td id="Stat">Status</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          </div>
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Карта

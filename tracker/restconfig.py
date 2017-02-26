@@ -13,6 +13,7 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
 # Serializers define the API representation.
 class GeolabelSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:

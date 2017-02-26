@@ -1,31 +1,60 @@
 /**
  * Created by aleksandrzukov on 17.02.17.
  */
-var map;
+
+
 
 function initMap() {
             var lat = 51.738516;
             var lng = 36.145149;
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: lat, lng: lng},
-                zoom: 7
+                zoom: 3
             });
                 }
                 
-                
-function SetMarker(lat, lng) {
+function SetMarker(lat, lng, name) {
    var myLatLng = {lat: lat, lng: lng};
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    center: myLatLng
-  });
 
   var marker = new google.maps.Marker({
     position: myLatLng,
     map: map,
     animation: google.maps.Animation.DROP
   });
+
+
+  var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h3 id="firstHeading" class="firstHeading">'+name+'</h3>'+
+      '</div>';
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+  google.maps.event.addListener(marker,'click', function() {
+    infowindow.open(map, marker);
+  });
+
+}
+
+
+
+
+function loadDoc() {
+ $.getJSON("http://13.65.148.113/api/Geopositions",
+    function(r) {
+        var m = r.length;
+        for (var i = 0; i < m; i++) {
+            var id = r[i].driver;
+            var lat = Number(r[i].lattitude);
+            var lng = Number(r[i].longitude);
+            //alert(name +"  "+ lng +"  "+ lat);
+            SetMarker(lat, lng, id);
+
+        }
+    });
 
 }
 
@@ -79,7 +108,7 @@ function SetUser() {
             for (var q = 0; q < m; q++) {
                 for (var n = 0; n < j; n++) {
                     if ((loc[q].student === data[n].url) && (strUser === data[n].username)) {
-                        SetMarker(loc[q].latitude, loc[q].longitude);
+                        //SetMarker(loc[q].latitude, loc[q].longitude);
 
                     }
                 }
@@ -94,22 +123,28 @@ function SetUser() {
 function Get() {
 
     var xhr = new XMLHttpRequest();
+    var x = new XMLHttpRequest();
     xhr.open("GET", '/users/?format=json', true);
+    x.open('GET', '/geolabels/?format=json', true);
     xhr.onreadystatechange = function () {
         if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200 ) {
             var data = JSON.parse(xhr.responseText);
+            var loc = JSON.parse(x.responseText);
             var j = data.length;
-            var newitemnum = 3;
             for (var i = 0; i < j; i++) {
                 var newitemdesc = data[i].username;
-                $("#myselect").append('<option value="'+newitemnum+'" selected="">'+newitemdesc+'</option>');
+            }
+            var m = loc.length;
+            for (var j = 0; j < m; j++) {
+                //SetMarker(loc[j].latitude, loc[j].longitude);
+
              }
-            $("#myselect").val('');
-            $("#myselect").selectpicker("refresh");
+
 
         }
     };
 
+    x.send();
     xhr.send();
 
 }
