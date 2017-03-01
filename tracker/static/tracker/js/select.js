@@ -4,11 +4,11 @@
 
 
 function initMap() {
-            var lat = 51.738516;
-            var lng = 36.145149;
+            var lat = 51.731310;
+            var lng = 36.192407;
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: lat, lng: lng},
-                zoom: 12
+                zoom: 13
             });
                 }
                 
@@ -35,7 +35,7 @@ function seeet(lat, lng, name, id) {
         var R = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
         var r = new R();
         var p = [];
-    r.open('GET', 'http://13.65.148.113/api/Orders/Closed/'+id, true);
+    r.open('GET', 'http://13.65.148.113/api/Orders/Active/'+id, true);
     r.onload = function () {
         var ResZak = JSON.parse(r.responseText);
         var t = ResZak.length;
