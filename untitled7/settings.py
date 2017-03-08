@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -53,6 +53,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'untitled7.urls'
+
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
+
+SESSION_COOKIE_HTTPONLY = True
 
 TEMPLATES = [
     {
@@ -69,6 +73,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'untitled7.wsgi.application'
 
@@ -129,3 +134,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+

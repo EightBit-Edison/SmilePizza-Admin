@@ -21,18 +21,21 @@
 
   </head>
     <body onload="loadDoc()">
-    <div class="navbar navbar-default navbar-static-top" style="background-color: #323B55">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#" style="color: #FFFFFF; font-size: 40px">CourierAdmin<br></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right"></ul>
-            <a class="btn btn-primary navbar-btn navbar-right" href="{% url "logout" %}">Выход</a>
-        </div>
-      </div>
+    <div id="section">
+    <div class="navbar navbar-default navbar-static-top" style="max-height: 55px;    background: repeating-linear-gradient(135grad, #fadcbe, #fadcbe 10px, #fce8d4 10px, #fce8d4 20px);">
+          <img id="logo" style="height: 55px;max-height: 55px; z-index: 100500" src="{% static "tracker/img/Logo.png" %}">
+
+
+            <a class="btn btn-primary navbar-btn navbar-right" href="{% url "logout" %}" style="width: 6%; min-width: 70px; margin-right: 10%;">Выход</a>
+
+            <a class="nav navbar-nav navbar-right" id="username" style="padding-top: 15px; padding-right: 25px;max-height: 55px; color: #000"  >{{ request.user.username.title }}</a>
+
+
+
+    </div>
     </div>
     <div class="section">
+        <div class="container" style="width: 100%">
       <div class="col-md-12">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -49,7 +52,7 @@
         </div>
       </div>
 
-
+</div>
 </div>
 </body>
 </html>

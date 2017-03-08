@@ -1,42 +1,3 @@
-/*------------------------------------------------------------------- /
-
-Template Name: Kite
-Template URI: http://jwtheme.com/
-Author: JWTheme
-Author URI: http://jwtheme.com/
-Description: Kite Coming Soon HTML Template by JWTheme
-Version: 1.1
-License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: HTML, Template, Coming Soon, Kite
-
---------------------------------------------------------------------- */
-
-
-/* Table of contents
----------------------------------------------------------------------- /
-*
-*  1 - Import Google Font
-*  2 - Global Style
-*    2.1 - Next Section
-*    2.2 - Social Button
-*    2.3 - Placeholder color
-*    2.4 - Height Resize
-*  3 - Main Menu 
-*  4 - Page Top Section   
-*  5 - About Us Section
-*  6 - Subscribe Section
-*  7 - Contact Section
-*  8 - Footer Section  
-*  9 - Media Query 
-*    9.1 - media screen and (max-width: 992px)
-*    9.2 - media screen and (max-width: 768px)
-*    9.3 - media screen and (max-width: 1170px) 
-*  10 - Preloader
-*
----------------------------------------------------------------------- */
-
-
 
 
 /* 1 - Import Google Font
@@ -51,12 +12,17 @@ Tags: HTML, Template, Coming Soon, Kite
 
 /* 2 - Global Style
 ---------------------------------------------------------------------- */
-body{
-	font-family:'Roboto', sans-serif;
-	color:#fff;
-	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing:grayscale;
+body {
+    background: repeating-linear-gradient(
+	135grad,
+    #fadcbe,
+    #fadcbe 10px,
+    #fce8d4 10px,
+    #fce8d4 20px
+  );
 }
+
+
 
 a{
 	color: #3498db;

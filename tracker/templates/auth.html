@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<!DOCTYPE html>
+<html>
 <head>
 	<meta charset="utf-8">
 	<title>Авторизация</title>
@@ -14,15 +14,12 @@
 	<script type="text/javascript" src="{% static "tracker/js/placeholder.js" %}"></script>
 </head>
 <body>
-
 	<form id="slick-login" method="post">
-        {% csrf_token %}
-        <h3 class="site-title">
-					CourierAdmin
-				</h3><!-- /.site-title -->
-		<label for="username">Логин:</label><input type="text" name="username" class="placeholder" placeholder="Login" id="username">
-		<label for="password">Пароль:</label><input type="password" name="password" class="placeholder" placeholder="Password" id="password">
-		<input type="submit" value="Enter">
+        <img style="margin-left: -25%; width: 150%; padding-bottom: 35%" src="{% static "tracker/img/SMC.png" %}">
+		<label for="username">Логин:</label><input type="text" name="username" class="placeholder" placeholder="Логин" id="username" style="background-color: #f2cd84">
+		<label for="password">Пароль:</label><input type="password" name="password" class="placeholder" placeholder="Пароль" id="password" style="background-color: #f2cd84">
+		<input type="submit" value="Войти">
+        <img id="bottom_img" style="opacity: 0.7; margin-left: -25%; width: 150%; margin-top: 35%" src="{% static "tracker/img/bottom_bar.png" %}">
 	</form>
 </body>
 </html>
