@@ -1,17 +1,55 @@
 /**
  * Created by aleksandrzukov on 17.02.17.
  */
+/*
+function get_cookie ( cookie_name )
+{
+  var results = document.cookie.match ( '(^|;) ?' + cookie_name + '=([^;]*)(;|$)' );
+
+  if ( results )
+    return ( unescape ( results[2] ) );
+  else
+    return null;
+}
+*/
+var longti = 36.192407;
+var lati = 51.731310;
+//alert(latitude + longtitude);
+
 
 
 function initMap() {
-            var lat = 51.731310;
-            var lng = 36.192407;
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: lat, lng: lng},
+                center: {lat: lati, lng: longti},
                 zoom: 13
             });
                 }
-                
+
+
+/*
+setInterval(function () {
+    document.cookie = "zoom="+map.zoom;
+}, 1500);
+
+setInterval(function () {
+    document.cookie = "center="+map.center;
+}, 500);
+
+var cen = get_cookie ( "center" );
+var zoom = get_cookie ( "zoom" );
+if (zoom == "undefined" || zoom == "NaN"){
+    zoom = "13";
+}
+try{
+    var n = cen.search(/,/i);
+    lati = Number(cen.slice(1,n));
+    longti = Number(cen.slice(n+1, cen.length-1));
+
+}catch(err){
+   longti = 36.192407;
+   lati = 51.731310;
+}
+*/
 function SetMarker(lat, lng, name, orders) {
   var marker = new google.maps.Marker({
     position: {lat: lat, lng: lng},
@@ -82,7 +120,7 @@ function SetMarker2(lat, lng, orders) {
         x.open('GET', 'http://13.65.148.113/api/Drivers', true);
         x.onload = function () {
             try {
-
+                //map.setZoom(10);
                 var ResGeo = JSON.parse(xhr.responseText);
                 var ResD = JSON.parse(x.responseText);
                 var d = ResD.length;
@@ -100,11 +138,12 @@ function SetMarker2(lat, lng, orders) {
                         if (id == ResD[j].login) {
                             var name = ResD[j].name;
                             // alert(name +"  "+ lng +"  "+ lat)
-                            setTimeout(seeet(lat, lng, name, id), 500);
+                            setTimeout(seeet(lat, lng, name, id), 2000);
 
                         }
                     }
                 }
+                //setTimeout(MoveMap(lati, longti), 5000);
 
             }
             catch (err) {
@@ -119,3 +158,12 @@ function SetMarker2(lat, lng, orders) {
         xhr.send();
 
     }
+
+/*
+function MoveMap (lati,longti) {
+        return function(e) {
+          self.map.panTo(new google.maps.LatLng(lati,longti));
+          setTimeout(map.setZoom(17), 3000);
+        }
+    }
+*/
