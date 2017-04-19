@@ -1,2 +1,3 @@
-# My project's README
 # SmilePizza-Admin
+
+Admin panel for SmilePizza
